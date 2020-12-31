@@ -12,7 +12,6 @@ COPY src /app/src
 RUN npm install && \
     npm install react-scripts@3.3.1 -g && \
     apk add bash
-# start app
 CMD ["npm", "start"]
 
 #FROM node:14-alpine
