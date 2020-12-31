@@ -12,7 +12,7 @@ import {
 import useForm from "react-hook-form";
 import videoHttp from "../../../util/http/video-http";
 import * as yup from '../../../util/vendor/yup';
-import {createRef, MutableRefObject, useContext, useEffect, useRef, useState} from "react";
+import {createRef, MutableRefObject, useEffect, useRef, useState} from "react";
 import {useParams, useHistory} from "react-router";
 import {useSnackbar} from "notistack";
 import {Video, VideoFileFieldsMap} from "../../../util/models";
@@ -113,6 +113,7 @@ export const Form = () => {
     const classes = useStyles();
     const snackbar = useSnackbar();
     const history = useHistory();
+    // @ts-ignore
     const {id} = useParams();
     const [video, setVideo] = useState<Video | null>(null);
     const [loading, setLoading] = useState<boolean>(false);
@@ -227,7 +228,9 @@ export const Form = () => {
                         inputRef={register}
                         disabled={loading}
                         InputLabelProps={{shrink: true}}
+                        // @ts-ignore
                         error={errors.title !== undefined}
+                        // @ts-ignore
                         helperText={errors.title && errors.title.message}
                     />
                     <TextField
@@ -241,7 +244,9 @@ export const Form = () => {
                         inputRef={register}
                         disabled={loading}
                         InputLabelProps={{shrink: true}}
+                        // @ts-ignore
                         error={errors.description !== undefined}
+                        // @ts-ignore
                         helperText={errors.description && errors.description.message}
                     />
                     <Grid container spacing={1}>
@@ -256,7 +261,9 @@ export const Form = () => {
                                 inputRef={register}
                                 disabled={loading}
                                 InputLabelProps={{shrink: true}}
+                                // @ts-ignore
                                 error={errors.year_launched !== undefined}
+                                // @ts-ignore
                                 helperText={errors.year_launched && errors.year_launched.message}
                             />
                         </Grid>
@@ -271,7 +278,9 @@ export const Form = () => {
                                 inputRef={register}
                                 disabled={loading}
                                 InputLabelProps={{shrink: true}}
+                                // @ts-ignore
                                 error={errors.duration !== undefined}
+                                // @ts-ignore
                                 helperText={errors.duration && errors.duration.message}
                             />
                         </Grid>
@@ -318,6 +327,7 @@ export const Form = () => {
                 </Grid>
                 <Grid item xs={12} md={6}>
                     <RatingField
+                        // @ts-ignore
                         value={watch('rating')}
                         setValue={(value) => setValue('rating', value, true)}
                         error={errors.rating}
@@ -335,12 +345,14 @@ export const Form = () => {
                                 ref={uploadsRef.current['file_thumb']}
                                 accept={'image/*'}
                                 label={'Thumb'}
+                                // @ts-ignore
                                 setValue={(value) => setValue('file_thumb', value)}
                             />
                             <UploadField
                                 ref={uploadsRef.current['file_banner']}
                                 accept={'image/*'}
                                 label={'Banner'}
+                                // @ts-ignore
                                 setValue={(value) => setValue('file_banner', value)}
                             />
                         </CardContent>
@@ -354,6 +366,7 @@ export const Form = () => {
                                 ref={uploadsRef.current['file_trailer']}
                                 accept={'video/mp4'}
                                 label={'Trailer'}
+                                // @ts-ignore
                                 setValue={(value) => setValue('file_trailer', value)}
                             />
                             <UploadField
@@ -361,6 +374,7 @@ export const Form = () => {
                                 accept={'video/mp4'}
                                 label={'Principal'}
                                 setValue={(value) => {
+                                    // @ts-ignore
                                     setValue('file_video', value)
                                     console.log(getValues());
                                 }}
